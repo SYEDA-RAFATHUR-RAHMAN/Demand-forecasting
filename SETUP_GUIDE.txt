@@ -1,0 +1,150 @@
+╔══════════════════════════════════════════════════════════════════╗
+║   AI-DRIVEN DEMAND FORECASTING & INVENTORY OPTIMIZATION SYSTEM   ║
+║   VTU 6th Semester CSE — Ghousia College of Engineering          ║
+║   Guide: Dr T Venkatesh                                          ║
+╚══════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STEP 1 — INSTALL PYTHON  (do this only once)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Go to: https://www.python.org/downloads/
+2. Click "Download Python 3.11"  (use 3.11, not 3.12)
+3. Run the installer
+4. ⚠️  IMPORTANT: Tick the box that says "Add Python to PATH"
+5. Click Install Now
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STEP 2 — SET UP YOUR PROJECT FOLDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Create a folder on your Desktop called:  demand_forecasting
+2. Put ALL these files inside that folder (flat, no subfolders):
+   ✅ app.py
+   ✅ models.py
+   ✅ data_generator.py
+   ✅ requirements.txt
+
+Your folder should look like:
+   Desktop/
+   └── demand_forecasting/
+       ├── app.py              ← main file you run
+       ├── models.py
+       ├── data_generator.py
+       └── requirements.txt
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STEP 3 — INSTALL LIBRARIES  (do this only once)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Press  Windows key + R
+2. Type  cmd  and press Enter  (black window opens)
+3. Type this exactly and press Enter:
+
+   cd Desktop\demand_forecasting
+
+4. Now type this and press Enter (takes 3-5 minutes, needs internet):
+
+   pip install -r requirements.txt
+
+5. Wait for it to finish. You'll see lots of text — that's normal.
+6. When it says "Successfully installed", you're done.
+
+⚠️  If prophet gives error, install it separately:
+   pip install prophet
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ STEP 4 — RUN THE APP  (every time you want to use it)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Open cmd (black window)
+2. Type:  cd Desktop\demand_forecasting
+3. Type:  streamlit run app.py
+4. Wait a few seconds
+5. A browser window opens automatically at:
+      http://localhost:8501
+6. Your app is running! 🎉
+
+To STOP the app: go back to cmd and press  Ctrl + C
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ WHAT THE APP SHOWS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Tab 1 — Dashboard
+   Overview of all 5 products: total revenue, units sold,
+   category-wise pie chart, revenue bar chart.
+
+Tab 2 — Demand Forecast
+   Select any product + model (Prophet recommended).
+   See actual vs forecasted demand line chart.
+   Table with forecast values + expected revenue.
+   Prophet shows trend decomposition graph too.
+
+Tab 3 — Inventory Optimizer
+   All products with: current stock, forecast, reorder point,
+   safety stock, and suggested order quantity.
+   Color-coded status: 🔴 Critical / 🟡 Low / 🟢 Healthy / 🔵 Overstock
+
+Tab 4 — Model Comparison
+   All 4 models evaluated on test data.
+   MAE and RMSE shown per model.
+   Predicted vs actual chart.
+   Table comparing model capabilities.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ VIVA PREPARATION — KEY POINTS TO REMEMBER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q: What is the problem you are solving?
+A: Retail stores lose money from overstock (too much stock) and
+   understock (too little stock). Our system predicts future demand
+   so managers know how much to order.
+
+Q: What models did you use?
+A: Four models:
+   1. Moving Average — average of last 3 months (baseline)
+   2. Linear Regression — finds trend in data (scikit-learn)
+   3. Random Forest — 100 decision trees using lag + season features
+   4. Prophet — Facebook/Meta's time-series model, handles
+      trend + seasonality automatically. This is our main model.
+
+Q: How do you evaluate the models?
+A: MAE (Mean Absolute Error) — average units wrong per prediction
+   RMSE (Root Mean Squared Error) — penalizes large errors more
+   Lower value = more accurate model.
+
+Q: What is Reorder Point?
+A: ROP = Avg Daily Demand × Lead Time
+   When stock falls to this level, place a new order.
+
+Q: What is Safety Stock?
+A: SS = Z × StdDev(demand) × √Lead Time
+   Extra buffer stock to handle unexpected demand spikes.
+   Z = 1.65 for 95% service level.
+
+Q: Why Streamlit?
+A: Streamlit converts Python code into a web app automatically.
+   No HTML/CSS/JavaScript needed. Used in industry for data dashboards.
+
+Q: Why Prophet over other models?
+A: Prophet handles trend + seasonality automatically, gives
+   confidence intervals, is interpretable, and is used by
+   Meta (Facebook) and Amazon in production systems.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ TECH STACK SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Language  : Python 3.11
+UI        : Streamlit
+Charts    : Plotly (interactive)
+ML Models : scikit-learn (Linear Regression, Random Forest)
+            Prophet (time-series forecasting)
+Data      : pandas, numpy
+Domain    : Retail Supply Chain / Inventory Management
